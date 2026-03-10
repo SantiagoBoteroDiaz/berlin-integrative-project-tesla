@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Hourly Parking</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+</head>
+
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white min-h-screen">
+
+      <nav class="bg-slate-900 border-b border-slate-800">
+
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <div class="flex items-center gap-8">
+
+                <h1 class="text-xl font-bold text-blue-400">
+                    AutoPark Admin
+                </h1>
+
+                <a href="./dashboard.html" class="text-slate-300 hover:text-white transition">
+
+                    Dashboard
+                </a>
+
+                <a href="./suscriptions.html" class="text-slate-300 hover:text-white transition">
+
+                    Subscriptions
+                </a>
+
+                <a href="./hourlyParking.html" class="text-slate-300 hover:text-white transition">
+
+                    Hourly Parking
+                </a>
+
+            </div>
+
+            <a href="../../../public/index.html" class="text-blue-400 hover:text-blue-300 text-sm">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <section class="max-w-7xl mx-auto px-6 mb-16">
+        
+        <div class="max-w-7xl mx-auto p-6 flex justify-between">
+        </div> 
+
+        <div data-aos="fade-up" class="bg-slate-900 rounded-xl overflow-hidden">
+
+            <table class="w-full text-left">
+
+                <thead class="bg-slate-800">
+
+                    <tr>
+                        <th class="p-4">Plate</th>
+                        <th class="p-4">Entry</th>
+                        <th class="p-4">Exit</th>
+                        <th class="p-4">Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody class="text-slate-400">
+
+                    <tr class="border-t border-slate-800 hover:bg-slate-800">
+                        <td class="p-4">DEF456</td>
+                        <td class="p-4">14:20</td>
+                        <td class="p-4">—</td>
+                        <td class="p-4 text-yellow-400">Active</td>
+                    </tr>
+
+                    <tr class="border-t border-slate-800 hover:bg-slate-800">
+                        <td class="p-4">AAA111</td>
+                        <td class="p-4">10:10</td>
+                        <td class="p-4">11:45</td>
+                        <td class="p-4">Closed</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+
+        AOS.init({ duration: 900 })
+
+        new Chart(document.getElementById("hourChart"), {
+            type: "line",
+            data: {
+                labels: ["8am", "10am", "12pm", "2pm", "4pm", "6pm"],
+                datasets: [{
+                    label: "Revenue",
+                    data: [150, 220, 400, 300, 500, 450],
+                    borderColor: "#3b82f6",
+                    backgroundColor: "#3b82f633"
+                }]
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
