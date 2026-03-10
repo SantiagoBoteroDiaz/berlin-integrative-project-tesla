@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Subscriptions</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+</head>
+
+
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white min-h-screen">
+
+
+    <!-- BACK BUTTON -->
+
+    <div class="max-w-7xl mx-auto p-6">
+
+        <a href="../../public/index.html" class="text-blue-400 hover:text-blue-300 text-sm">
+
+            ← Back to Home
+
+        </a>
+
+    </div>
+
+
+
+    <section class="flex items-center justify-center px-6">
+
+        <div class="max-w-5xl w-full text-center">
+
+            <h1 data-aos="fade-up" class="text-4xl font-bold mb-4">
+
+                Subscription Plans
+
+            </h1>
+
+            <p data-aos="fade-up" data-aos-delay="200" class="text-slate-400 mb-12">
+
+                Choose the best plan for your vehicle
+
+            </p>
+
+
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+
+
+
+                <!-- CAR PLAN -->
+
+                <div data-aos="fade-up" data-aos-delay="300"
+                    class="bg-slate-900 border border-slate-800 shadow-2xl p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
+
+                    <div class="flex justify-center mb-6">
+
+                        <div class="bg-blue-500/20 p-4 rounded-full text-2xl">
+
+                            🚗
+
+                        </div>
+
+                    </div>
+
+                    <h2 class="text-2xl font-bold mb-4">
+                        Car Subscription
+                    </h2>
+
+                    <p class="text-4xl font-bold text-blue-400 mb-6">
+                        $150
+                        <span class="text-lg text-slate-400">/month</span>
+                    </p>
+
+                    <ul class="text-slate-400 space-y-3 mb-8">
+
+                        <li>✔ Unlimited parking</li>
+                        <li>✔ Automatic plate recognition</li>
+                        <li>✔ Smart entry system</li>
+                        <li>✔ 30 day subscription</li>
+
+                    </ul>
+
+                    <button onclick="subscribe(this)"
+                        class="bg-blue-500 hover:bg-blue-600 w-full py-3 rounded-xl font-semibold transition">
+
+                        Subscribe
+
+                    </button>
+
+                </div>
+
+
+
+
+                <!-- MOTORCYCLE PLAN -->
+
+                <div data-aos="fade-up" data-aos-delay="500"
+                    class="bg-slate-900 border border-slate-800 shadow-2xl p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
+
+                    <div class="flex justify-center mb-6">
+
+                        <div class="bg-green-500/20 p-4 rounded-full text-2xl">
+
+                            🏍
+
+                        </div>
+
+                    </div>
+
+                    <h2 class="text-2xl font-bold mb-4">
+                        Motorcycle Subscription
+                    </h2>
+
+                    <p class="text-4xl font-bold text-green-400 mb-6">
+                        $80
+                        <span class="text-lg text-slate-400">/month</span>
+                    </p>
+
+                    <ul class="text-slate-400 space-y-3 mb-8">
+
+                        <li>✔ Unlimited parking</li>
+                        <li>✔ Motorcycle reserved area</li>
+                        <li>✔ Automatic entry</li>
+                        <li>✔ 30 day subscription</li>
+
+                    </ul>
+
+                    <button onclick="subscribe(this)"
+                        class="bg-green-500 hover:bg-green-600 w-full py-3 rounded-xl font-semibold transition">
+
+                        Subscribe
+
+                    </button>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SCRIPTS -->
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+
+        AOS.init({
+            duration: 900,
+            once: true
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "berlin-integrative-project-tesla",
+  "version": "1.0.0",
+  "description": "autopark │ ├── backend │ │   ├── src │   │ │   │   ├── config │   │   │     database.js │   │   │     env.js │   │ │   │   ├── controllers │   │   │     parking.controller.js │   │   │     payment.controller.js │   │   │     vehicle.controller.js │   │ │   │   ├── services │   │   │     parking.service.js │   │   │     payment.service.js │   │ │   │   ├── repositories │   │   │     parking.repository.js │   │   │     payment.repository.js │   │     │ │   │   ├── routes │   │   │     parking.routes.js │   │   │     payment.routes.js │   │ │   │   ├── middlewares │   │   │     error.middleware.js │   │ │   │   ├── db │   │   │     schema.sql │   │   │     seed.sql │   │   │     functions.sql │   │ │   │   ├── utils │   │   │     time.utils.js │   │ │   │   └── app.js │ │   ├── server.js │   ├── package.json │   └── .env │ │ ├── frontend │ │   ├── public │   │     index.html │   │ │   ├── src │   │ │   │   ├── assets │   │   │     images │   │   │     icons │   │ │   │   ├── styles │   │   │     tailwind.css │   │ │   │   ├── components │   │   │     plateInput.js │   │   │     paymentCard.js │   │   │     statusMessage.js │   │   │     navbar.js │   │ │   │   ├── pages │   │   │ │   │   │     entry │   │   │         entryPage.js │   │   │ │   │   │     payment │   │   │         paymentPage.js │   │   │ │   │   │     exit │   │   │         exitPage.js │   │ │   │   ├── services │   │   │     api.js │   │   │     parking.service.js │   │ │   │   ├── utils │   │   │     formatter.js │   │   │     validator.js │   │ │   │   └── main.js │ │   ├── tailwind.config.js │   └── package.json │ │ ├── docs │   ├── database_diagram.png │   └── architecture.png │ └── README.md",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Riwi-io-Medellin/berlin-integrative-project-tesla.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Riwi-io-Medellin/berlin-integrative-project-tesla/issues"
+  },
+  "homepage": "https://github.com/Riwi-io-Medellin/berlin-integrative-project-tesla#readme",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
+  }
+}
