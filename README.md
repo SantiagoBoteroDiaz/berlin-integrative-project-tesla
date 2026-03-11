@@ -174,3 +174,4 @@ Parking occupancy analytics
 # Authors
 
 Santiago Botero Diaz
+Steven Alexander Patiño Arenas
