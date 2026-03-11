@@ -1,9 +1,7 @@
 import { MercadoPagoConfig, Preference, Payment } from 'mercadopago';
 import { env } from './config/env.js';
 
-// This module encapsulates Mercado Pago SDK integration.
-// It creates payment preferences and fetches payment details.
-
+// This module abstracts Mercado Pago SDK usage for the project.
 const accessToken = String(env.MERCADOPAGO.ACCESS_TOKEN || '').trim();
 if (!accessToken) {
   throw new Error('Missing MP_ACCESS_TOKEN environment variable');
@@ -13,7 +11,7 @@ const client = new MercadoPagoConfig({ accessToken });
 const preferenceClient = new Preference(client);
 const paymentClient = new Payment(client);
 
-// Creates a preference and returns checkout links for the frontend.
+// Creates a checkout preference and supplies the frontend with the generated URLs.
 export async function createPreference({
   title,
   quantity,
@@ -39,17 +37,17 @@ export async function createPreference({
     const response = await preferenceClient.create({ body });
     return response;
   } catch (error) {
-    console.error('[MercadoPago] Error al crear preferencia:', error);
+    console.error('[MercadoPago] Failed to create preference:', error);
     throw error;
   }
 }
 
-// Retrieves payment detail by payment id.
+// Retrieves payment detail by payment id for audit or confirmation flows.
 export async function getPayment(paymentId) {
   try {
     return await paymentClient.get({ id: paymentId });
   } catch (error) {
-    console.error(`[MercadoPago] Error al consultar pago ${paymentId}:`, error);
+    console.error(`[MercadoPago] Failed to fetch payment ${paymentId}:`, error);
     throw error;
   }
 }

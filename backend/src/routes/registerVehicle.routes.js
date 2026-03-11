@@ -1,8 +1,9 @@
-import { Router } from "express"; 
-import { proccessRegister } from "../controllers/registerVehicle.controller.js"; 
+import { Router } from "express";
+import { proccessRegister } from "../controllers/registerVehicle.controller.js";
 
-const registerVehicleRoutes = Router() 
+const registerVehicleRoutes = Router();
 
-registerVehicleRoutes.post('/' , proccessRegister);  
+// Only POST requests are allowed for vehicle registration workflow.
+registerVehicleRoutes.post('/', proccessRegister);
 
-export default registerVehicleRoutes 
+export default registerVehicleRoutes;
