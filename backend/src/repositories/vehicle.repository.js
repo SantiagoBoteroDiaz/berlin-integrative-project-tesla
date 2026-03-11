@@ -8,3 +8,11 @@ export const registerVehicle = async (plate, typeVehicle) => {
 
     return result.rows[0];
 };
+ 
+
+export const exitVehicle = async (plate) => {
+    const query = `SELECT * FROM process_vehicle_exit($1); `;
+    const data = [plate];
+    const result = await pool.query(query, data);
+    return result.rows[0];
+};
