@@ -17,7 +17,8 @@
 
     <!-- NAVBAR -->
 
-    <nav class="max-w-7xl mx-auto flex justify-between items-center p-6">
+    <nav
+        class="fixed  bg-slate backdrop-blur-md z-50 top-0 left-0 w-full max-w-7xl mx-auto flex justify-between items-center p-6">
 
         <h1 class="text-2xl font-bold text-blue-400">
             AutoPark
@@ -55,14 +56,14 @@
                 that detects license plates automatically, calculates
                 parking fees and manages vehicle exit securely.
 
-                Designed for **parking lots, malls, buildings and smart cities**.
+                Designed for parking lots, malls, buildings and smart cities**.
 
             </p>
 
         </div>
 
         <div data-aos="fade-left">
-            <img src="parking.png" class="rounded-xl shadow-2xl">
+            <img src="../src/assets/logo-icon.png" class="rounded-xl">
         </div>
     </section>
 
@@ -108,99 +109,120 @@
 
             <div class="grid md:grid-cols-3 gap-10">
 
-                <div data-aos="zoom-in" class="bg-slate-900 p-8 rounded-xl">
+                <div data-aos="zoom-in">
+                    <div
+                        class="bg-slate-900 p-8 rounded-xl hover:scale-105 hover:bg-slate-800 transition transform duration-300">
 
-                    <h3 class="text-xl font-bold mb-4">
-                        License Plate Recognition
-                    </h3>
+                        <h3 class="text-xl font-bold mb-4">
+                            License Plate Recognition
+                        </h3>
 
-                    <p class="text-slate-400">
+                        <p class="text-slate-400">
 
-                        Vehicles are automatically detected
-                        using computer vision technology.
+                            Vehicles are automatically detected
+                            using computer vision technology.
 
-                    </p>
+                        </p>
+
+                    </div>
+                </div>
+
+
+
+                <div data-aos="zoom-in">
+                    <div
+                        class="bg-slate-900 p-8 rounded-xl hover:scale-105 hover:bg-slate-800 transition transform duration-300">
+
+                        <h3 class="text-xl font-bold mb-4">
+                            Automated Payments
+                        </h3>
+
+                        <p class="text-slate-400">
+
+                            Parking fees are calculated automatically
+                            based on time and vehicle type.
+
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <div data-aos="zoom-in">
+                    <div
+                        class="bg-slate-900 p-8 rounded-xl hover:scale-105 hover:bg-slate-800 transition transform duration-300">
+
+                        <h3 class="text-xl font-bold mb-4">
+                            15 Minute Exit Window
+                        </h3>
+
+                        <p class="text-slate-400">
+
+                            After payment the vehicle has
+                            a secure exit window.
+
+                        </p>
+
+                    </div>
 
                 </div>
 
 
-                <div data-aos="zoom-in" class="bg-slate-900 p-8 rounded-xl">
+                <div data-aos="zoom-in">
+                    <div
+                        class="bg-slate-900 p-8 rounded-xl hover:scale-105 hover:bg-slate-800 transition transform duration-300">
 
-                    <h3 class="text-xl font-bold mb-4">
-                        Automated Payments
-                    </h3>
+                        <h3 class="text-xl font-bold mb-4">
+                            Subscriptions
+                        </h3>
 
-                    <p class="text-slate-400">
+                        <p class="text-slate-400">
 
-                        Parking fees are calculated automatically
-                        based on time and vehicle type.
+                            Monthly plans for cars and motorcycles.
 
-                    </p>
+                        </p>
 
+                    </div>
                 </div>
 
 
-                <div data-aos="zoom-in" class="bg-slate-900 p-8 rounded-xl">
+                <div data-aos="zoom-in">
+                    <div
+                        class="bg-slate-900 p-8 rounded-xl hover:scale-105 hover:bg-slate-800 transition transform duration-300">
 
-                    <h3 class="text-xl font-bold mb-4">
-                        15 Minute Exit Window
-                    </h3>
+                        <h3 class="text-xl font-bold mb-4">
+                            Smart Reports
+                        </h3>
 
-                    <p class="text-slate-400">
+                        <p class="text-slate-400">
 
-                        After payment the vehicle has
-                        a secure exit window.
+                            Analyze parking revenue and usage
+                            with powerful reports.
 
-                    </p>
+                        </p>
 
+                    </div>
                 </div>
 
 
-                <div data-aos="zoom-in" class="bg-slate-900 p-8 rounded-xl">
 
-                    <h3 class="text-xl font-bold mb-4">
-                        Subscriptions
-                    </h3>
+                <div data-aos="zoom-in">
+                    <div
+                        class="bg-slate-900 p-8 rounded-xl hover:scale-105 hover:bg-slate-800 transition transform duration-300">
 
-                    <p class="text-slate-400">
+                        <h3 class="text-xl font-bold mb-4">
+                            Real Time Monitoring
+                        </h3>
 
-                        Monthly plans for cars and motorcycles.
+                        <p class="text-slate-400">
 
-                    </p>
+                            Monitor vehicles and sessions
+                            in real time.
 
+                        </p>
+                    </div>
                 </div>
 
-
-                <div data-aos="zoom-in" class="bg-slate-900 p-8 rounded-xl">
-
-                    <h3 class="text-xl font-bold mb-4">
-                        Smart Reports
-                    </h3>
-
-                    <p class="text-slate-400">
-
-                        Analyze parking revenue and usage
-                        with powerful reports.
-
-                    </p>
-
-                </div>
-
-
-                <div data-aos="zoom-in" class="bg-slate-900 p-8 rounded-xl">
-
-                    <h3 class="text-xl font-bold mb-4">
-                        Real Time Monitoring
-                    </h3>
-
-                    <p class="text-slate-400">
-
-                        Monitor vehicles and sessions
-                        in real time.
-
-                    </p>
-
-                </div>
 
             </div>
 
@@ -333,7 +355,7 @@
     </footer>
 
 
-
+    <script type="module" src="../src/scripts/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <script>
