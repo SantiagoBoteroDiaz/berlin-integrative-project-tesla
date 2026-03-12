@@ -1,7 +1,7 @@
 // DASHBOARD
 
 export const hourlyContent = document.getElementById("hourlyRate"); 
-
+export const suscriptionContent = document.getElementById("subscriptionContent"); 
 
 
 // SUSCRIPTIONS

@@ -1,17 +1,18 @@
-import { allSuscriptions } from "../api/suscriptions.api.js"; 
+import { allSuscriptions } from "../api/hourlyRate.js"; 
 import { hourlyContent } from "../doom.js";
 
 
-export async function suscription() {
+export async function hourlyRate() {
     const response = await allSuscriptions() ; 
-
-    response.forEach(suscriptions => {
-        hourlyContent.innerHTML =+ `
+    console.log(response);
+    
+    response.result.forEach(suscriptions => {
+        hourlyContent.innerHTML += `
                     <tr class="border-t border-slate-800 hover:bg-slate-800">
                         <td class="p-4">${suscriptions.plate}</td>
                         <td class="p-4">${suscriptions.vehicle_type}</td>
                         <td class="p-4">${suscriptions.entry_time}</td>
-                        <td class="p-4 text-yellow-400">${suscriptions.exit_time}</td>
+                        <td class="p-4">${suscriptions.exit_time}</td>
                         <td class="p-4">${suscriptions.status}</td>
                     </tr>
         `
@@ -20,7 +21,7 @@ export async function suscription() {
 
 export async function renderHourlyRate() {
     if(!hourlyContent) return; 
-    suscription()
+    hourlyRate(); 
 }
 
 //  "plate": "JCR171",

@@ -64,26 +64,11 @@
                         <th class="p-4">Plan</th>
                         <th class="p-4">Start</th>
                         <th class="p-4">End</th>
+                        <th class="p-4">State</th>
                     </tr>
                 </thead>
 
-                <tbody class="text-slate-400">
-
-                    <tr class="border-t border-slate-800 hover:bg-slate-800">
-                        <td class="p-4">ABC123</td>
-                        <td class="p-4">Car</td>
-                        <td class="p-4">Monthly</td>
-                        <td class="p-4">2026-03-01</td>
-                        <td class="p-4">2026-03-30</td>
-                    </tr>
-
-                    <tr class="border-t border-slate-800 hover:bg-slate-800">
-                        <td class="p-4">XYZ789</td>
-                        <td class="p-4">Motorcycle</td>
-                        <td class="p-4">Monthly</td>
-                        <td class="p-4">2026-03-05</td>
-                        <td class="p-4">2026-04-04</td>
-                    </tr>
+                <tbody class="text-slate-400" id="subscriptionContent">
 
                 </tbody>
 
@@ -94,7 +79,7 @@
     </section>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
+    <script type="module" src="../../scripts/main.js"></script>
     <script>
 
         AOS.init({ duration: 900 })
