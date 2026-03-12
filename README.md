@@ -1,177 +1,304 @@
-# AutoPark
-Automated Parking Management System
+# 🚗 AutoPark
 
-AutoPark is an automated parking management system designed to control vehicle entry, parking sessions, payments, and exit authorization using license plate recognition.
+AutoPark is a **parking management system** that allows registering vehicle entries and exits, managing parking subscriptions, and processing online payments through Mercado Pago.
 
-The system detects vehicle plates through a camera, automatically registers parking sessions, calculates parking fees based on time, and allows vehicles to exit only within a 15-minute window after payment.
+The project is structured as a **monorepo** with a Node.js REST API backend and a static frontend built with HTML and TailwindCSS.
 
-# Key Features
+---
 
-Automatic license plate recognition
+## 📚 Table of Contents
 
-Automatic vehicle entry registration
+* Description
+* Architecture
+* Technologies
+* Requirements
+* Installation
+* Environment Variables
+* Scripts
+* API Endpoints
+* Payment Integration
+* Frontend
+* System Flow
+* Project Structure
+* Roadmap
+* Authors
 
-Parking time tracking
+---
 
-Payment processing by license plate
+## 📌 Description
 
-15-minute exit authorization window
+AutoPark provides core parking-lot management features such as:
 
-Sales reporting
+* Vehicle entry registration
+* Vehicle exit processing and fee calculation
+* Parking subscription management
+* Hourly rate consultation
+* Online payment processing via Mercado Pago
 
-Multiple vehicle types support
+The system relies on **PostgreSQL stored procedures** to handle the main parking operations.
 
-Parking session history
+---
 
-Database-level business logic using stored procedures
+## 🏗 Architecture
 
-# System Architecture
+```
+Frontend (HTML + Tailwind)
+        ↓
+REST API (Express)
+        ↓
+Controllers
+        ↓
+Services
+        ↓
+Repositories
+        ↓
+PostgreSQL (Stored Procedures)
+        ↓
+Mercado Pago
+```
 
-
-# Tech Stack
-Backend
-
-Node.js
-
-Express.js
-
-PostgreSQL
-
-Frontend
-
-HTML
-
-TailwindCSS
-
-JavaScript
-
-Computer Vision
-
-Python
-
-OpenCV
-
-License Plate Detection
-
-Database
-
-PostgreSQL
-
-PL/pgSQL Stored Procedures
-
-# Database Design
-
-# The database is fully normalized (3NF) and designed to handle:
-
-vehicle registration
-
-parking sessions
-
-payments
-
-subscription plans
-
-exit authorization
-
-    Main Tables
-    vehicle_type
-    vehicle
-    rate
-    plan
-    vehicle_plan
-    parking_session
-    payment
-    exit_permission
-
+---
 # Entity Relationship Diagram (ERD)
 
 ![alt text](image.png)
 
-Example suggestion:
+---
 
-Core Business Logic
-Vehicle Entry
+## 🧰 Technologies
 
-The camera detects the vehicle plate.
+### Backend
 
-The system registers the vehicle if it does not exist.
+* Node.js
+* Express
+* PostgreSQL
+* Mercado Pago SDK
 
-A parking session is created.
+### Frontend
 
-parking_session
-status = active
-Payment Calculation
+* HTML
+* TailwindCSS (CDN)
+* Modular JavaScript
+* AOS (Animate On Scroll)
 
-The system calculates the parking fee based on:
+### Tools
 
-time parked
+* npm
+* dotenv
 
-hourly rate
+---
 
-vehicle type
+## ⚙ Requirements
 
-total = CEIL(hours_parked) * price_per_hour
-Payment Processing
+* Node.js **18+**
+* PostgreSQL **14+**
+* npm **9+**
+* Mercado Pago account
 
-# A stored procedure processes the payment:
+---
 
-process_parking_payment(plate)
+## 📦 Installation
 
-This procedure:
+1️⃣ Clone the repository
 
-Calculates the total price
+git clone https://github.com/Riwi-io-Medellin/berlin-integrative-project-tesla.git
 
-Registers a payment
+2️⃣ Navigate into the project
 
-Generates an exit permission
+cd autopark
 
-Returns payment details
+3️⃣ Install dependencies
 
-Exit Authorization
+npm install
 
-Vehicles can exit only if the exit permission is still valid.
+4️⃣ Create environment file
 
-NOW() <= valid_until
+Copy:
 
-If valid:
+.env.template
 
-EXIT_ALLOWED
+into:
 
-If expired:
+.env
 
-PAY_AGAIN
-Admin Dashboard
+and fill in the required variables.
 
-The Admin Dashboard is an implementation layer of the system that provides operational insights and financial monitoring.
+5️⃣ Start the backend server
 
-It allows administrators to track parking activity and analyze revenue.
+npm start
 
-Dashboard Features
+6️⃣ Serve the frontend
 
-Hourly parking revenue reports
+npx serve frontend/public
 
-Subscription revenue reports
+or use any static file server.
 
-Active parking sessions monitoring
+---
 
-Historical payment tracking
+## 💳 Payment Integration
 
-Example Metrics
-Total hourly parking revenue
-Total subscription revenue
-Number of vehicles parked
-Daily parking activity
+The system integrates **Mercado Pago** for online payments.
 
+Flow:
 
-Real-time dashboard updates
+1. The system calculates the amount using `/vehicle/exit`
+2. A payment preference is created
+3. The API returns the `initPoint` payment URL
+4. The frontend redirects the user to Mercado Pago checkout
 
-Online payment integration
+Main integration file:
 
-Multiple parking locations
+backend/src/sdk/mercadopago.js
 
-Parking occupancy analytics
+---
 
-# Authors
+## 🖥 Frontend
 
-Santiago Botero Diaz
-Steven Alexander Patiño Arenas
+### Landing Page
+
+frontend/public/index.html
+
+### Main Pages
+
+frontend/src/pages/
+
+* suscriptions.html
+* vehicleExit.html
+
+### Scripts
+
+frontend/src/scripts/
+
+* viewuser
+* api
+* doom.js
+
+---
+
+## 🔄 System Flow
+
+### Vehicle Entry
+```
+POST /vehicle/register
+        ↓
+Stored Procedure: enter_parking
+        ↓
+Vehicle registered in database
+```
+
+---
+
+### Vehicle Exit
+```
+POST /vehicle/exit
+        ↓
+Stored Procedure: process_vehicle_exit
+        ↓
+Fee calculated
+```
+
+---
+
+### Online Payment
+```
+POST /vehicle/payment
+        ↓
+Mercado Pago preference created
+        ↓
+User redirected to checkout
+```
+
+---
+
+## 📂 Project Structure
+
+```
+.
+│   .env.template
+│   .gitignore
+│   image.png
+│   package-lock.json
+│   package.json
+│   README.fulls.md
+│   README.md
+│
+├── backend
+│   │   server.js
+│   │
+│   └── src
+│       │   app.js
+│       │
+│       ├── config
+│       │       database.js
+│       │       env.js
+│       │
+│       ├── controllers
+│       │       vehicle.controller.js
+│       │
+│       ├── repositories
+│       │       vehicle.repository.js
+│       │
+│       ├── routes
+│       │       vehicle.routes.js
+│       │
+│       ├── sdk
+│       │       mercadopago.js
+│       │
+│       └── services
+│               payment.service.js
+│               vehicle.service.js
+│
+└── frontend
+    ├── public
+    │       index.html
+    │
+    └── src
+        ├── assets
+        │       favicon.jpg
+        │       hero.jpg
+        │       logo-icon.png
+        │
+        ├── components
+        ├── pages
+        │   │   suscriptions.html
+        │   │   vehicleExit.html
+        │   │
+        │   └── admin
+        │           dashboard.html
+        │           hourlyParking.html
+        │           suscriptions.html
+        │
+        ├── scripts
+        │   │   doom.js
+        │   │   main.js
+        │   │
+        │   ├── api
+        │   │       suscriptions.api.js
+        │   │       vehicle.api.js
+        │   │
+        │   ├── viewadmin
+        │   │       dashboard.admin.js
+        │   │
+        │   └── viewuser
+        │           suscription.user.js
+        │           vehicleExit.js
+        │
+        └── styles
+```
+## 🧭 Roadmap
+
+* Automatic **license plate recognition**
+* Full admin dashboard
+* Payment history module
+* Parking occupancy analytics
+* Automated tests
+
+---
+
+## 👨‍💻 Authors
+
+* Santiago Botero Diaz
+* Steven Alexander Patiño Arenas
+* Robinson Urrego
+* Samuel Aristizabal Rueda
+
+---
