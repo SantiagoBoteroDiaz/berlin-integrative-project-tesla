@@ -1,4 +1,4 @@
-import { registerService, exitSession } from "../services/vehicle.service.js";
+import { registerService, exitSession, allHourlyRate, allSuscription } from "../services/vehicle.service.js";
 import { createPaymentPreference } from "../services/payment.service.js";
 
 // HTTP controller that orchestrates validation and service execution for vehicle entry.
@@ -29,5 +29,23 @@ export const createPaymentLink = async (req, res) => {
         res.json({ response: result });
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+};
+
+export const hourlyRate = async (req, res) => {
+    try {
+        const result = await allHourlyRate();
+        res.json({ result });
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+};
+
+export const suscription = async (req, res) => {
+    try {
+        const result = await allSuscription();
+        res.json({ result });
+    } catch (error) {
+        res.status(500).json({ error });
     }
 };
