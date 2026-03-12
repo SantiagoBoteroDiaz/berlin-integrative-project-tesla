@@ -25,3 +25,9 @@ export const getHourlyVehicule = async() => {
     const result = await pool.query(query) 
     return result.rows 
 }
+
+export const getSuscriptionVehicule = async() => {
+    const query = `select * from public.suscription;` 
+    const result = await pool.query(query) 
+    return result.rows 
+}
