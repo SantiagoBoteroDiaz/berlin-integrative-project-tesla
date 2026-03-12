@@ -1,5 +1,5 @@
 import { MercadoPagoConfig, Preference, Payment } from 'mercadopago';
-import { env } from './config/env.js';
+import { env } from '../config/env.js';
 
 // This module abstracts Mercado Pago SDK usage for the project.
 const accessToken = String(env.MERCADOPAGO.ACCESS_TOKEN || '').trim();
