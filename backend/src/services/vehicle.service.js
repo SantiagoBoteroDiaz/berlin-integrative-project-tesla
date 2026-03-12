@@ -1,4 +1,4 @@
-import { registerVehicle, exitVehicle, getHourlyVehicule, getSuscriptionVehicule} from "../repositories/vehicle.repository.js";
+import { registerVehicle, exitVehicle, getHourlyVehicule, getSuscriptionVehicule, regiterNewVehicle} from "../repositories/vehicle.repository.js";
 
 // Validate the payload and delegate the registration logic to the repository.
 export const registerService = async (plate, typeVehicle) => {
@@ -38,3 +38,14 @@ export const  allSuscription = async() => {
 
     return vehicle; 
 } 
+
+export const registerNew = async (plate, vehicleType) => { 
+    
+    if(!plate || !vehicleType) {
+        throw new Error("Plate or type is required") 
+    }
+    
+    const newVehicle = await regiterNewVehicle(plate, vehicleType); 
+    
+    return newVehicle
+}
