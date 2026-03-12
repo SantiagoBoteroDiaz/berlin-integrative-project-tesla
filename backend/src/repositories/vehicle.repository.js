@@ -1,6 +1,6 @@
 import { pool } from "../config/database.js";
 
-// Calls the stored procedure that records vehicle entry linked to a decoded vehicle type.
+// regist vehicule in data base 
 export const registerVehicle = async (plate, typeVehicle) => {
     const query = `SELECT public.enter_parking($1, (select id from public.vehicle_type vt where vt."name" = $2));`;
     const data = [plate, typeVehicle];
@@ -9,6 +9,7 @@ export const registerVehicle = async (plate, typeVehicle) => {
     return result.rows[0];
 };
  
+// regist exit in data base 
 
 export const exitVehicle = async (plate) => {
     const query = `SELECT * FROM process_vehicle_exit($1); `;
@@ -16,3 +17,11 @@ export const exitVehicle = async (plate) => {
     const result = await pool.query(query, data);
     return result.rows[0];
 };
+
+// get all vehicles whit suscription 
+
+export const getHourlyVehicule = async() => {
+    const query = `select * from public.hourly_date;` 
+    const result = await pool.query(query) 
+    return result.rows 
+}

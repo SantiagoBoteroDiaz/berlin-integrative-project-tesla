@@ -1,4 +1,5 @@
-import { registerService, exitSession} from "../services/vehicle.service.js";
+import { response } from "express";
+import { registerService, exitSession, allHourlyRate} from "../services/vehicle.service.js";
 
 // HTTP controller that orchestrates validation and service execution for vehicle entry.
 export const proccessRegister = async (req, res) => {
@@ -19,4 +20,13 @@ export const exitRegister = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
-};
+}; 
+
+export const hourlyRate = async (req , res) => {
+    try { 
+        const result = await allHourlyRate(); 
+        res.json({result}) 
+    } catch (error) {
+        res.status(500).json({error : error})
+    }
+}
