@@ -1,5 +1,6 @@
 // DASHBOARD
 
+export const hourlyContent = document.getElementById("hourlyRate"); 
 
 
 

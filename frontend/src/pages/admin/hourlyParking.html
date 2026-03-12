@@ -67,21 +67,16 @@
 
                 </thead>
 
-                <tbody class="text-slate-400">
+                <tbody class="text-slate-400" id="hourlyRate">
 
-                    <tr class="border-t border-slate-800 hover:bg-slate-800">
+                    <!-- <tr class="border-t border-slate-800 hover:bg-slate-800">
                         <td class="p-4">DEF456</td>
                         <td class="p-4">14:20</td>
                         <td class="p-4">—</td>
                         <td class="p-4 text-yellow-400">Active</td>
-                    </tr>
+                    </tr> -->
 
-                    <tr class="border-t border-slate-800 hover:bg-slate-800">
-                        <td class="p-4">AAA111</td>
-                        <td class="p-4">10:10</td>
-                        <td class="p-4">11:45</td>
-                        <td class="p-4">Closed</td>
-                    </tr>
+            
 
                 </tbody>
 
@@ -92,23 +87,10 @@
     </section>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
+    <script type="module" src="../../scripts/main.js"></script>
     <script>
 
         AOS.init({ duration: 900 })
-
-        new Chart(document.getElementById("hourChart"), {
-            type: "line",
-            data: {
-                labels: ["8am", "10am", "12pm", "2pm", "4pm", "6pm"],
-                datasets: [{
-                    label: "Revenue",
-                    data: [150, 220, 400, 300, 500, 450],
-                    borderColor: "#3b82f6",
-                    backgroundColor: "#3b82f633"
-                }]
-            }
-        })
 
     </script>
 
