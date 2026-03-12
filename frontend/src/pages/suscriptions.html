@@ -47,95 +47,102 @@
 
 
 
-            <div class="grid md:grid-cols-2 gap-8">
-
-
-
+            <div class="grid md:grid-cols-2 gap-8 items-start">
 
                 <!-- CAR PLAN -->
 
                 <div data-aos="fade-up" data-aos-delay="300"
-                    class="bg-slate-900 border border-slate-800 shadow-2xl p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
+                    class="relative overflow-hidden group bg-slate-900 border border-slate-800 shadow-2xl p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
 
-                    <div class="flex justify-center mb-6">
+                   
+                    <div class="absolute top-0 left-[-120%] w-[200%] h-full bg-gradient-to-r from-transparent via-blue-400/20 to-transparent 
+                        skew-x-12 group-hover:left-[120%] transition-all  duration-[1800ms] ease-out">
+                    </div>
 
-                        <div class="bg-blue-500/20 p-4 rounded-full text-2xl">
+                    <div class="relative">
 
-                            🚗
-
+                        <div class="flex justify-center mb-6">
+                            <div class="bg-blue-500/20 p-4 rounded-full text-2xl">
+                                🚗
+                            </div>
                         </div>
+
+                        <h2 class="text-2xl font-bold mb-4">
+                            Car Subscription
+                        </h2>
+
+                        <p class="text-4xl font-bold text-blue-400 mb-6">
+                            221.000K
+                            <span class="text-lg text-slate-400">/month</span>
+                        </p>
+
+                        <ul class="text-slate-400 space-y-3 mb-8">
+                            <li>✔ Unlimited parking</li>
+                            <li>✔ Unlimited entries and exits</li>
+                            <li>✔ Car reserved area</li>
+                            <li>✔ 30 day subscription</li>
+                        </ul>
+                        
+                        <div  id="container_car_plan">
+                            
+                        </div>
+
+                        <button id="bnt_subscribe_car"
+                            class="bg-blue-500 hover:bg-blue-600 w-full py-3 rounded-xl font-semibold transition">
+                            Subscribe
+                        </button>
 
                     </div>
 
-                    <h2 class="text-2xl font-bold mb-4">
-                        Car Subscription
-                    </h2>
-
-                    <p class="text-4xl font-bold text-blue-400 mb-6">
-                        $150
-                        <span class="text-lg text-slate-400">/month</span>
-                    </p>
-
-                    <ul class="text-slate-400 space-y-3 mb-8">
-
-                        <li>✔ Unlimited parking</li>
-                        <li>✔ Automatic plate recognition</li>
-                        <li>✔ Smart entry system</li>
-                        <li>✔ 30 day subscription</li>
-
-                    </ul>
-
-                    <button onclick="subscribe(this)"
-                        class="bg-blue-500 hover:bg-blue-600 w-full py-3 rounded-xl font-semibold transition">
-
-                        Subscribe
-
-                    </button>
-
                 </div>
 
-
+               
 
 
                 <!-- MOTORCYCLE PLAN -->
 
                 <div data-aos="fade-up" data-aos-delay="500"
-                    class="bg-slate-900 border border-slate-800 shadow-2xl p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
+                    class="relative overflow-hidden group bg-slate-900 border border-slate-800 shadow-2xl p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
 
-                    <div class="flex justify-center mb-6">
+                    
+                    <div class="absolute top-0 left-[-120%] w-[200%] h-full bg-gradient-to-r from-transparent via-green-400/20 to-transparent 
+                        skew-x-12 group-hover:left-[120%] transition-all  duration-[1800ms] ease-out">
+                    </div>
 
-                        <div class="bg-green-500/20 p-4 rounded-full text-2xl">
+                    <div id="hola" class="relative">
 
-                            🏍
+                        <div class="flex justify-center mb-6">
+                            <div class="bg-green-500/20 p-4 rounded-full text-2xl">
+                                🏍
+                            </div>
+                        </div>
+
+                        <h2 class="text-2xl font-bold mb-4">
+                            Motorcycle Subscription
+                        </h2>
+
+                        <p class="text-4xl font-bold text-green-400 mb-6">
+                            $152.000K
+                            <span class="text-lg text-slate-400">/month</span>
+                        </p>
+
+                        <ul class="text-slate-400 space-y-3 mb-8">
+                            <li>✔ Unlimited parking</li>
+                            <li>✔ Unlimited entries and exits</li>
+                            <li>✔ Motorcycle reserved area</li>
+                            <li>✔ 30 day subscription</li>
+                        </ul>
+                        
+                        <div id="container_bike_plan">
 
                         </div>
 
+                        <button id="bnt_subscribe_motorbike"
+                            class="bg-green-500 hover:bg-green-600 w-full py-3 rounded-xl font-semibold transition">
+                            Subscribe
+                        </button>
+
                     </div>
-
-                    <h2 class="text-2xl font-bold mb-4">
-                        Motorcycle Subscription
-                    </h2>
-
-                    <p class="text-4xl font-bold text-green-400 mb-6">
-                        $80
-                        <span class="text-lg text-slate-400">/month</span>
-                    </p>
-
-                    <ul class="text-slate-400 space-y-3 mb-8">
-
-                        <li>✔ Unlimited parking</li>
-                        <li>✔ Motorcycle reserved area</li>
-                        <li>✔ Automatic entry</li>
-                        <li>✔ 30 day subscription</li>
-
-                    </ul>
-
-                    <button onclick="subscribe(this)"
-                        class="bg-green-500 hover:bg-green-600 w-full py-3 rounded-xl font-semibold transition">
-
-                        Subscribe
-
-                    </button>
 
                 </div>
 
@@ -150,9 +157,8 @@
 
 
     <!-- SCRIPTS -->
-
+    <script type="module" src="../scripts/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
     <script>
 
         AOS.init({
