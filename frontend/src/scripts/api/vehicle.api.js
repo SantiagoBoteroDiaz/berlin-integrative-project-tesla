@@ -1,6 +1,6 @@
-const API = "https://berlin-integrative-project-tesla-production.up.railway.app/vehicle/payment";
+const API = "https://berlin-integrative-project-tesla-production.up.railway.app/vehicle/exit";
 
-export async function newSub(plate) {
+export async function vehicleExit(plate) {
     
     const response = await fetch(API,{
         method : "POST",
