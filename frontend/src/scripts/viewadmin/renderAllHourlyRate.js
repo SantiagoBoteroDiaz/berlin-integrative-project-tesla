@@ -24,16 +24,3 @@ export async function renderHourlyRate() {
     hourlyRate(); 
 }
 
-//  "plate": "JCR171",
-//       "vehicle_type": "car",
-//       "plan": "Car Monthly Plan",
-//       "start_date": "2026-03-12T01:13:35.664Z",
-//       "end_date": "2026-04-11T01:13:35.664Z",
-//       "active": true 
-
-//  "plate": "BDA211",
-//       "vehicle_type": "car",
-//       "entry_time": "2026-03-11T05:02:55.002Z",
-//       "exit_time": "2026-03-11T05:03:25.302Z",
-//       "status": "FINISHED",
-//       "status_payment": "PAID"
