@@ -4,7 +4,7 @@ import { renderSuscriptions } from "./viewadmin/renderAllSuscription.js";
 import {entryDashBoard} from "./viewuser/vehicleExit.js"
 // ViewUser
 
-entryDashBoard()
+entryDashBoard();
 bntsSuscriptions(); 
 renderHourlyRate(); 
 renderSuscriptions(); 
