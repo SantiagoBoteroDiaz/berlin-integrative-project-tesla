@@ -1,5 +1,14 @@
 import { Router } from "express";
-import { proccessRegister, exitRegister, createPaymentLink, hourlyRate, suscription , registNew} from "../controllers/vehicle.controller.js";
+import {
+  proccessRegister,
+  exitRegister,
+  createPaymentLink,
+  confirmPayment,
+  handlePaymentCallback,
+  hourlyRate,
+  suscription,
+  registNew
+} from "../controllers/vehicle.controller.js";
 
 const vehicleRoutes = Router();
 
@@ -8,6 +17,8 @@ const vehicleRoutes = Router();
 vehicleRoutes.post('/register', proccessRegister);
 vehicleRoutes.post('/exit', exitRegister);
 vehicleRoutes.post('/payment', createPaymentLink);
+vehicleRoutes.post('/payment/confirm', confirmPayment);
+vehicleRoutes.get('/payment/callback', handlePaymentCallback);
 vehicleRoutes.get('/hourlyRate', hourlyRate); 
 vehicleRoutes.get('/suscription', suscription); 
 vehicleRoutes.post('/newVehicle' , registNew);   
