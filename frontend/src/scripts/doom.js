@@ -13,5 +13,8 @@ export const containerBike = document.getElementById("container_bike_plan");
 
 // VEHICLE_EXIT
 
+export const plateInput = document.getElementById("plate_input");
+export const bntExit = document.getElementById("bnt_exit");
+
 
 

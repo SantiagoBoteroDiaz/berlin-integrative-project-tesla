@@ -1,5 +1,6 @@
 import { registerService, exitSession, allHourlyRate, allSuscription, registerNew, registNewVehiclePlan } from "../services/vehicle.service.js";
-import { createPaymentPreference } from "../services/payment.service.js";
+
+import { createPaymentPreference, confirmPaymentAndExit } from "../services/payment.service.js";
 
 // HTTP controller that orchestrates validation and service execution for vehicle entry.
 export const proccessRegister = async (req, res) => {
@@ -29,6 +30,66 @@ export const createPaymentLink = async (req, res) => {
         res.json({ response: result });
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+};
+
+export const confirmPayment = async (req, res) => {
+    try {
+        const { paymentId, plate } = req.body;
+        const result = await confirmPaymentAndExit({ paymentId, plate });
+        res.json({ response: result });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+const FRONTEND_BASE = 'https://berlin-integrative-project-tesla-production.up.railway.app/'.replace(/\/$/, '');
+
+const buildFrontendRedirect = ({ status, plate, paymentId, message }) => {
+    try {
+        const redirectUrl = new URL(FRONTEND_BASE);
+        redirectUrl.searchParams.set('paymentStatus', status);
+        if (plate) redirectUrl.searchParams.set('plate', plate);
+        if (paymentId) redirectUrl.searchParams.set('paymentId', paymentId);
+        if (message) redirectUrl.searchParams.set('message', message);
+        return redirectUrl.toString();
+    } catch {
+        const params = new URLSearchParams({ paymentStatus: status });
+        if (plate) params.set('plate', plate);
+        if (paymentId) params.set('paymentId', paymentId);
+        if (message) params.set('message', message);
+        return `${FRONTEND_BASE}?${params.toString()}`;
+    }
+};
+
+export const handlePaymentCallback = async (req, res) => {
+    const paymentId = req.query.payment_id ?? req.query.collection_id;
+    const plate = req.query.external_reference ?? req.query.plate;
+
+    if (!paymentId) {
+        const url = buildFrontendRedirect({
+            status: 'error',
+            plate,
+            message: 'payment_id missing in Mercado Pago response'
+        });
+        return res.redirect(url);
+    }
+
+    try {
+        const result = await confirmPaymentAndExit({ paymentId, plate });
+        const url = buildFrontendRedirect({
+            status: result.approved ? 'approved' : 'not-approved',
+            plate: result.payment.externalReference,
+            paymentId: result.payment.id
+        });
+        return res.redirect(url);
+    } catch (error) {
+        const url = buildFrontendRedirect({
+            status: 'error',
+            plate,
+            message: error.message
+        });
+        return res.redirect(url);
     }
 };
 
@@ -69,3 +130,4 @@ export const registPlan = async (req, res) => {
         res.status(500).json({ response: error });
     }   
 }
+

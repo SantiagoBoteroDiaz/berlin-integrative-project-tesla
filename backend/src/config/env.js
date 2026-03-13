@@ -13,6 +13,9 @@ export const env = {
   // Mercado Pago credentials required for payment SDK operations.
   MERCADOPAGO: {
     ACCESS_TOKEN: process.env.MP_ACCESS_TOKEN,
-    PUBLIC_KEY: process.env.MP_PUBLIC_KEY
+    PUBLIC_KEY: process.env.MP_PUBLIC_KEY,
+    BACK_URL_SUCCESS: process.env.MP_BACK_URL_SUCCESS,
+    BACK_URL_PENDING: process.env.MP_BACK_URL_PENDING,
+    BACK_URL_FAILURE: process.env.MP_BACK_URL_FAILURE
   }
 };
