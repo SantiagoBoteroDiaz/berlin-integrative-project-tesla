@@ -25,16 +25,27 @@ export const getHourlyVehicule = async() => {
     const result = await pool.query(query) 
     return result.rows 
 }
-
+//get all suscriptions 
 export const getSuscriptionVehicule = async() => {
     const query = `select * from public.suscription;` 
     const result = await pool.query(query) 
     return result.rows 
 } 
 
+//regist new vehicles
+
 export const regiterNewVehicle = async (plate , vehicleType) => { 
     const query = `insert into vehicle (plate, vehicle_type_id) values($1 , (select id from vehicle_type vt where vt."name" = $2)) returning *;` 
     const values = [plate, vehicleType]     
     const result  = await pool.query(query, values); 
     return result.rows
+}   
+
+// regist planes 
+
+export const registNewPlan = async (plate, planType , amount , status , idMercadoPago) => {
+    const query = `SELECT * FROM create_subscription_payment($1, $2,$3,$4,$5); `
+    const values = [plate , planType, amount, status, idMercadoPago] 
+    const result = await pool.query(query, values)
+    return result.rows 
 } 

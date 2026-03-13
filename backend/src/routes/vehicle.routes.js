@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { proccessRegister, exitRegister, createPaymentLink, hourlyRate, suscription , registNew} from "../controllers/vehicle.controller.js";
+import { proccessRegister, exitRegister, createPaymentLink, hourlyRate, suscription , registNew, registPlan } from "../controllers/vehicle.controller.js";
 
 const vehicleRoutes = Router();
 
@@ -12,5 +12,6 @@ vehicleRoutes.get('/hourlyRate', hourlyRate);
 vehicleRoutes.get('/suscription', suscription); 
 vehicleRoutes.post('/newVehicle' , registNew);   
 vehicleRoutes.get('/suscription', suscription);
+vehicleRoutes.post('/registPlan', registPlan); 
 
 export default vehicleRoutes;
