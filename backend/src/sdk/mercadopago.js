@@ -7,6 +7,10 @@ if (!accessToken) {
   throw new Error('Missing MP_ACCESS_TOKEN environment variable');
 }
 
+const SUCCESS_URL = env.MERCADOPAGO.BACK_URL_SUCCESS || 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketSucces.html';
+const PENDING_URL = env.MERCADOPAGO.BACK_URL_PENDING || 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketPending.html';
+const FAILURE_URL = env.MERCADOPAGO.BACK_URL_FAILURE || 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketFailed.html'; 
+
 const client = new MercadoPagoConfig({ accessToken });
 const preferenceClient = new Preference(client);
 const paymentClient = new Payment(client);
@@ -31,7 +35,12 @@ export async function createPreference({
         }
       ],
       external_reference: externalReference,
-      metadata
+      metadata, 
+          back_urls: {
+      success: SUCCESS_URL,
+      failure: FAILURE_URL,
+      pending: PENDING_URL
+    }
     };
 
     const response = await preferenceClient.create({ body });
