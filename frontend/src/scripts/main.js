@@ -8,6 +8,6 @@ entryDashBoard();
 bntsSuscriptions(); 
 renderHourlyRate(); 
 renderSuscriptions(); 
-loaders();
+
 
 
