@@ -7,9 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="../../styles/dashboard.css">
 </head>
 
-<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white min-h-screen">
+
+    <!-- NAVBAR -->
     <nav class="bg-slate-900 border-b border-slate-800">
 
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -41,9 +44,12 @@
         </div>
 
     </nav>
+
     <div class="max-w-7xl mx-auto p-6 flex justify-between">
 
     </div>
+
+    <!-- SECTION DATA -->
 
     <section class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6 mb-16">
 
@@ -64,49 +70,59 @@
 
     </section>
 
-    <section class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
 
-        <div data-aos="fade-up" class="bg-slate-900 p-8 rounded-xl">
-            <h2 class="text-xl mb-6 font-bold">Revenue Per Hour</h2>
-            <canvas id="revenueChart"></canvas>
+    <!-- VIDEO SECTION -->
+    <section>
+        <div class="w-full flex justify-center mt-10">
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl p-6 w-full max-w-2xl">
+
+          
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-white font-semibold text-lg">
+                        Parking camera monitor
+                    </h3>
+
+                    <span class="flex items-center gap-2 text-green-400 text-sm">
+                        <span class="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></span>
+                        Live
+                    </span>
+                </div>
+
+              
+                <div class="overflow-hidden rounded-xl border border-slate-800 mb-4">
+                    <video id="parkingVideo" class="w-full h-[260px] object-cover bg-black" autoplay muted loop
+                        controls>
+                        <source src="video/default.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+
+             
+                <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 text-center">
+                    <p class="text-slate-400 text-sm mb-1">
+                        Plate detected
+                    </p>
+
+                    <span id="plateDisplay" class="text-white text-2xl tracking-widest font-mono">
+                        --- ---
+                    </span>
+                </div>
+
+            </div>
+
         </div>
-
-        <div data-aos="fade-up" data-aos-delay="200" class="bg-slate-900 p-8 rounded-xl">
-            <h2 class="text-xl mb-6 font-bold">Subscription Distribution</h2>
-            <canvas id="subscriptionChart"></canvas>
-        </div>
-
     </section>
 
+
+
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script type="module" src="../../scripts/main.js"></script>
 
     <script>
 
         AOS.init({ duration: 900 })
 
-        new Chart(document.getElementById("revenueChart"), {
-            type: "line",
-            data: {
-                labels: ["8am", "10am", "12pm", "2pm", "4pm", "6pm"],
-                datasets: [{
-                    label: "Revenue",
-                    data: [200, 350, 500, 300, 700, 1200],
-                    borderColor: "#3b82f6",
-                    backgroundColor: "#3b82f644"
-                }]
-            }
-        })
-
-        new Chart(document.getElementById("subscriptionChart"), {
-            type: "doughnut",
-            data: {
-                labels: ["Cars", "Motorcycles"],
-                datasets: [{
-                    data: [12, 4],
-                    backgroundColor: ["#3b82f6", "#22c55e"]
-                }]
-            }
-        })
 
     </script>
 

@@ -15,7 +15,7 @@ function bntSubcribeCar () {
             text-center text-lg tracking-widest uppercase
             focus:outline-none focus:border-blue-500">
 
-            <button id="subscribe_confirm_car"  type="submit"
+            <button id="subscribe_confirm_car"  type="button"
                 class="bg-blue-500 hover:bg-blue-600 w-full py-3 rounded-xl font-semibold transition">
                 Confirm subscription    
             </button>
@@ -23,9 +23,33 @@ function bntSubcribeCar () {
         `;
         bntCar.style.display = "none";
 
+        const bntConfirm = document.getElementById("subscribe_confirm_car");
+        bntConfirm.addEventListener('click', newSubCar);
+
     });
 
 };
+
+async function newSubCar(e) {
+    e.preventDefault()
+
+    const plate = document.getElementById("plate_car").value.trim().toUpperCase();
+    const plan = "Car Monthly Plan";
+    const amount = 221000;
+
+    if (!plate) {
+        alert("Enter plate first");
+        return;
+    }
+
+   
+
+
+
+    window.location.href = sandboxInitPoint;
+
+};
+
 
 function bntSubcribeBike () {
     bntBike.addEventListener(`click`, e => {
@@ -50,7 +74,31 @@ function bntSubcribeBike () {
         `;
         bntBike.style.display = "none";
 
+        const bntConfirm = document.getElementById("subscribe_confirm_bike");
+        bntConfirm.addEventListener('click', newSubBike);
+
     });
+};
+
+
+async function newSubBike(e) {
+    e.preventDefault()
+
+    const plate = document.getElementById("plate_bike").value.trim().toUpperCase();
+    const plan = "Motorcycle Monthly Plan";
+    const amount = 152000;
+
+    if (!plate) {
+        alert("Enter plate first");
+        return;
+    }
+
+   
+
+
+
+    window.location.href = sandboxInitPoint;
+
 };
 
 

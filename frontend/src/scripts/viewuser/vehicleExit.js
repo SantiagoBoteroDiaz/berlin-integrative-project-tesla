@@ -25,7 +25,6 @@ export function entryDashBoard() {
         try {
 
             const data = await pay(plate);
-            console.log("API RESPONSE:", data);
 
 
             window.location.href=data.response.sandboxInitPoint
