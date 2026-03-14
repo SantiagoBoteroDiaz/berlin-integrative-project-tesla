@@ -1,4 +1,5 @@
 import { bntCar, bntBike, containerBike, containerCar } from "../doom.js"
+import { newplan } from "../api/planSuscription.api.js";
 
 
 function bntSubcribeCar () {
@@ -40,7 +41,7 @@ async function newSubCar(e) {
     if (!plate) {
         alert("Enter plate first");
         return;
-    }
+    };
 
    
 
