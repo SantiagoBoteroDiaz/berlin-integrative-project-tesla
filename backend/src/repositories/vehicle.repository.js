@@ -48,4 +48,12 @@ export const registNewPlan = async (plate, planType , amount , status , idMercad
     const values = [plate , planType, amount, status, idMercadoPago] 
     const result = await pool.query(query, values)
     return result.rows 
-} 
+}  
+
+
+export const paymentAndExit = async (plate, idMercadoPago, amount, status) => {
+    const query = `SELECT * FROM generate_exit_ticket_and_payment($1,$2,$3,$4);`  
+    const values = [plate, idMercadoPago, amount, status] 
+    const result = await pool.query(query, values); 
+    return result.rows 
+}
