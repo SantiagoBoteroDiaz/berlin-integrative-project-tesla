@@ -1,4 +1,4 @@
-import { registerVehicle, exitVehicle, getHourlyVehicule, getSuscriptionVehicule, regiterNewVehicle, registNewPlan} from "../repositories/vehicle.repository.js";
+import { registerVehicle, exitVehicle, getHourlyVehicule, getSuscriptionVehicule, regiterNewVehicle, registNewPlan, paymentAndExit} from "../repositories/vehicle.repository.js";
 
 // Validate the payload and delegate the registration logic to the repository.
 export const registerService = async (plate, typeVehicle) => {
@@ -56,4 +56,12 @@ export const registNewVehiclePlan = async(plate, planType , amount , status , id
     }
     const newPlan = await registNewPlan(plate, planType, amount, status, idMercadoPago);
     return newPlan;
+} 
+
+export const paymentExit = async(plate, idMercadoPago, amount, status) => {
+    if(!plate, !idMercadoPago , !amount, !status) {
+        throw new Error("all fields is required")
+    } 
+    const newExit = await paymentAndExit(plate, idMercadoPago, amount, status); 
+    return newExit
 }
