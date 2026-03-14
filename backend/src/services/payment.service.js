@@ -2,6 +2,12 @@ import { createPreference, getPayment } from '../sdk/mercadopago.js';
 import { env } from '../config/env.js';
 import { exitSession } from './vehicle.service.js';
 
+const DEFAULT_BACK_URLS = {
+  success: 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketSucces.html',
+  pending: 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketPending.html',
+  failure: 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketFailed.html'
+};
+
 const DEFAULT_EXIT_API_URL =
   'https://berlin-integrative-project-tesla-production.up.railway.app/vehicle/exit/';
 const EXIT_API_URL = env.EXIT_API_URL || DEFAULT_EXIT_API_URL;
@@ -49,10 +55,15 @@ const fetchExitAmount = async (plate) => {
 };
 
 const buildPreferencePayload = ({ plate, amount }, backUrls) => ({
-  title: `Pago de salida - ${plate}`,
-  quantity: 1,
-  unitPrice: amount,
-  externalReference: plate,
+  items: [
+    {
+      title: `Pago de salida - ${plate}`,
+      quantity: 1,
+      unit_price: amount,
+      currency_id: 'COP'
+    }
+  ],
+  external_reference: plate,
   metadata: {
     plate,
     amount
@@ -61,21 +72,20 @@ const buildPreferencePayload = ({ plate, amount }, backUrls) => ({
   auto_return: 'approved'
 });
 
-const DEFAULT_BACK_URLS = {
-  success: 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketSucces.html',
-  pending: 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketPending.html',
-  failure: 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketFailed.html'
-};
+const resolveBackUrls = () => ({
+  success: env.MERCADOPAGO.BACK_URL_SUCCESS || DEFAULT_BACK_URLS.success,
+  pending: env.MERCADOPAGO.BACK_URL_PENDING || DEFAULT_BACK_URLS.pending,
+  failure: env.MERCADOPAGO.BACK_URL_FAILURE || DEFAULT_BACK_URLS.failure
+});
+
+
 
 export const createPaymentPreference = async (plate) => {
   const normalizedPlate = plate;
   const exitData = await fetchExitAmount(normalizedPlate);
-  const backUrls = {
-    success: env.MERCADOPAGO.BACK_URL_SUCCESS || DEFAULT_BACK_URLS.success,
-    pending: env.MERCADOPAGO.BACK_URL_PENDING || DEFAULT_BACK_URLS.pending,
-    failure: env.MERCADOPAGO.BACK_URL_FAILURE || DEFAULT_BACK_URLS.failure
-  };
-  const response = await createPreference(buildPreferencePayload(exitData, backUrls));
+  const backUrls = resolveBackUrls();
+  const preferencePayload = buildPreferencePayload(exitData, backUrls);
+  const response = await createPreference(preferencePayload);
   const body = response?.body ?? response;
   const initPoint = body?.init_point ?? body?.sandbox_init_point;
 
@@ -88,6 +98,46 @@ export const createPaymentPreference = async (plate) => {
     amount: exitData.amount,
     preferenceId: body?.id,
     initPoint,
+    sandboxInitPoint: body?.sandbox_init_point
+  };
+};
+
+export const createSubscriptionPreference = async ({ plate, planType, amount }) => {
+  const normalizedAmount = Number(amount);
+  if (!plate || !planType || !Number.isFinite(normalizedAmount)) {
+    throw new Error('Plate, planType y amount válidos son requeridos para crear la suscripción.');
+  }
+
+  const backUrls = resolveBackUrls();
+  const payload = {
+    items: [
+      {
+        title: `Subscription ${planType} - ${plate}`,
+        quantity: 1,
+        unit_price: normalizedAmount,
+        currency_id: 'COP'
+      }
+    ],
+    external_reference: plate,
+    metadata: {
+      plate,
+      planType,
+      amount: normalizedAmount
+    },
+    back_urls: backUrls,
+    auto_return: 'approved'
+  };
+
+  const response = await createPreference(payload);
+  const body = response?.body ?? response;
+
+  return {
+    plate,
+    planType,
+    amount: normalizedAmount,
+    status: body?.status ?? 'pending',
+    idMercadoPago: body?.id,
+    initPoint: body?.init_point,
     sandboxInitPoint: body?.sandbox_init_point
   };
 };

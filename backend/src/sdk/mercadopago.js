@@ -7,40 +7,28 @@ if (!accessToken) {
   throw new Error('Missing MP_ACCESS_TOKEN environment variable');
 }
 
-const SUCCESS_URL = env.MERCADOPAGO.BACK_URL_SUCCESS || 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketSucces.html';
-const PENDING_URL = env.MERCADOPAGO.BACK_URL_PENDING || 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketPending.html';
-const FAILURE_URL = env.MERCADOPAGO.BACK_URL_FAILURE || 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketFailed.html'; 
+const SUCCESS_URL = env.MERCADOPAGO.BACK_URL_SUCCESS 
+const PENDING_URL = env.MERCADOPAGO.BACK_URL_PENDING 
+const FAILURE_URL = env.MERCADOPAGO.BACK_URL_FAILURE
 
 const client = new MercadoPagoConfig({ accessToken });
 const preferenceClient = new Preference(client);
 const paymentClient = new Payment(client);
 
 // Creates a checkout preference and supplies the frontend with the generated URLs.
-export async function createPreference({
-  title,
-  quantity,
-  unitPrice,
-  externalReference,
-  metadata
-}) {
+export async function createPreference(payload) {
   try {
-    // Build a minimal valid Mercado Pago payload.
+    const defaultBody = {
+      back_urls: {
+        success: SUCCESS_URL,
+        failure: FAILURE_URL,
+        pending: PENDING_URL
+      },
+      auto_return: 'approved'
+    };
     const body = {
-      items: [
-        {
-          title,
-          quantity,
-          unit_price: unitPrice,
-          currency_id: 'COP'
-        }
-      ],
-      external_reference: externalReference,
-      metadata, 
-          back_urls: {
-      success: SUCCESS_URL,
-      failure: FAILURE_URL,
-      pending: PENDING_URL
-    }
+      ...defaultBody,
+      ...payload
     };
 
     const response = await preferenceClient.create({ body });
