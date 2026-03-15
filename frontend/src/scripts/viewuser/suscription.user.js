@@ -160,7 +160,7 @@ async function newSubBike(e) {
 
     const plate = document.getElementById("plate_bike").value.trim().toUpperCase();
     const planType = "Motorcycle Monthly Plan";
-    const amount = 221000;
+    const amount = 152000;
 
     if (!plate) {
         const p = document.getElementById("message_bike");
