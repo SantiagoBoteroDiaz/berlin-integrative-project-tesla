@@ -2,8 +2,11 @@
 
 export const hourlyContent = document.getElementById("hourlyRate"); 
 export const suscriptionContent = document.getElementById("subscriptionContent"); 
+export const plate = document.getElementById("plateDisplay"); 
 
-
+export const vehiclesParked = document.getElementById("vehiclesParked");
+export const totalSuscriptions = document.getElementById("totalSuscriptions");
+export const revenueToday = document.getElementById("revenueToday");
 // SUSCRIPTIONS
 
 export const bntCar = document.getElementById("bnt_subscribe_car");
