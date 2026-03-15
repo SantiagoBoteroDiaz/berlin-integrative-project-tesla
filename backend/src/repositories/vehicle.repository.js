@@ -56,4 +56,10 @@ export const paymentAndExit = async (plate, idMercadoPago, amount, status) => {
     const values = [plate, idMercadoPago, amount, status] 
     const result = await pool.query(query, values); 
     return result.rows 
+} 
+
+export const getDashboard = async () =>{
+    const query = `SELECT * FROM get_dashboard_metrics();`; 
+    const result = await pool.query(query) 
+    return result.rows
 }

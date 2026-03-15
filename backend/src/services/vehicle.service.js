@@ -1,4 +1,4 @@
-import { registerVehicle, exitVehicle, getHourlyVehicule, getSuscriptionVehicule, regiterNewVehicle, registNewPlan, paymentAndExit} from "../repositories/vehicle.repository.js";
+import { registerVehicle, exitVehicle, getHourlyVehicule, getSuscriptionVehicule, regiterNewVehicle, registNewPlan, paymentAndExit, getDashboard} from "../repositories/vehicle.repository.js";
 
 // Validate the payload and delegate the registration logic to the repository.
 export const registerService = async (plate, typeVehicle) => {
@@ -65,3 +65,11 @@ export const paymentExit = async(plate, idMercadoPago, amount, status) => {
     const newExit = await paymentAndExit(plate, idMercadoPago, amount, status); 
     return newExit
 }
+
+export const getDashboardMetrics = async () => {
+    const metrics = await getDashboard(); 
+    if(!metrics.length) {
+        return[{state : "empty"}] 
+    }
+    return metrics
+ }
