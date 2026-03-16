@@ -4,6 +4,8 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Subscriptions</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,14 +14,14 @@
 </head>
 
 
-<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white min-h-screen">
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white min-h-screen flex flex-col">
 
 
     <!-- BACK BUTTON -->
 
-    <div class="max-w-7xl mx-auto p-6">
+    <div class="max-w-7xl mx-auto w-full px-6 py-6">
 
-        <a href="../../../index.html" class="text-blue-400 hover:text-blue-300 text-sm">
+        <a href="../../../index.html" class="text-blue-400 hover:text-blue-300 text-sm transition">
 
             ← Back to Home
 
@@ -29,11 +31,13 @@
 
 
 
-    <section class="flex items-center justify-center px-6">
+    <!-- MAIN -->
+
+    <section class="flex flex-1 items-center justify-center px-4 md:px-6">
 
         <div class="max-w-5xl w-full text-center">
 
-            <h1 data-aos="fade-up" class="text-4xl font-bold mb-4">
+            <h1 data-aos="fade-up" class="text-3xl md:text-4xl font-bold mb-4">
 
                 Subscription Plans
 
@@ -47,32 +51,34 @@
 
 
 
-            <div class="grid md:grid-cols-2 gap-8 items-start">
+            <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
 
                 <!-- CAR PLAN -->
 
                 <div data-aos="fade-up" data-aos-delay="300"
-                    class="relative overflow-hidden group bg-slate-900 border border-slate-800 shadow-2xl p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
+                    class="relative overflow-hidden group bg-slate-900 border border-slate-800 shadow-2xl p-8 md:p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
 
-                   
-                    <div class="absolute top-0 left-[-120%] w-[200%] h-full bg-gradient-to-r from-transparent via-blue-400/20 to-transparent 
-                        skew-x-12 group-hover:left-[120%] transition-all  duration-[1800ms] ease-out">
+                    <div
+                        class="absolute top-0 left-[-120%] w-[200%] h-full bg-gradient-to-r from-transparent via-blue-400/20 to-transparent skew-x-12 group-hover:left-[120%] transition-all duration-[1800ms] ease-out">
                     </div>
 
                     <div class="relative">
 
                         <div class="flex justify-center mb-6">
+
                             <div class="bg-blue-500/20 p-4 rounded-full text-2xl">
                                 🚗
                             </div>
+
                         </div>
 
                         <h2 class="text-2xl font-bold mb-4">
                             Car Subscription
                         </h2>
 
-                        <p class="text-4xl font-bold text-blue-400 mb-6">
-                            221.000K
+                        <p class="text-3xl md:text-4xl font-bold text-blue-400 mb-6">
+                            $221.000
                             <span class="text-lg text-slate-400">/month</span>
                         </p>
 
@@ -82,49 +88,47 @@
                             <li>✔ Car reserved area</li>
                             <li>✔ 30 day subscription</li>
                         </ul>
-                        
-                        <div  id="container_car_plan">
-                            
-                        </div>
 
-                       
+                        <div id="container_car_plan"></div>
 
-                        <button id="bnt_subscribe_car"
+                        <button id="btn_subscribe_car"
                             class="bg-blue-500 hover:bg-blue-600 w-full py-3 rounded-xl font-semibold transition">
+
                             Subscribe
+
                         </button>
 
                     </div>
 
                 </div>
 
-               
 
 
-                <!-- MOTORBIKE PLAN -->
+                <!-- MOTORCYCLE PLAN -->
 
                 <div data-aos="fade-up" data-aos-delay="500"
-                    class="relative overflow-hidden group bg-slate-900 border border-slate-800 shadow-2xl p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
+                    class="relative overflow-hidden group bg-slate-900 border border-slate-800 shadow-2xl p-8 md:p-10 rounded-3xl transition transform hover:-translate-y-2 hover:scale-105 duration-300">
 
-                    
-                    <div class="absolute top-0 left-[-120%] w-[200%] h-full bg-gradient-to-r from-transparent via-green-400/20 to-transparent 
-                        skew-x-12 group-hover:left-[120%] transition-all  duration-[1800ms] ease-out">
+                    <div
+                        class="absolute top-0 left-[-120%] w-[200%] h-full bg-gradient-to-r from-transparent via-green-400/20 to-transparent skew-x-12 group-hover:left-[120%] transition-all duration-[1800ms] ease-out">
                     </div>
 
-                    <div id="hola" class="relative">
+                    <div class="relative">
 
                         <div class="flex justify-center mb-6">
+
                             <div class="bg-green-500/20 p-4 rounded-full text-2xl">
                                 🏍
                             </div>
+
                         </div>
 
                         <h2 class="text-2xl font-bold mb-4">
                             Motorcycle Subscription
                         </h2>
 
-                        <p class="text-4xl font-bold text-green-400 mb-6">
-                            $152.000K
+                        <p class="text-3xl md:text-4xl font-bold text-green-400 mb-6">
+                            $152.000
                             <span class="text-lg text-slate-400">/month</span>
                         </p>
 
@@ -134,20 +138,19 @@
                             <li>✔ Motorcycle reserved area</li>
                             <li>✔ 30 day subscription</li>
                         </ul>
-                        
-                        <div id="container_bike_plan">
 
-                        </div>
+                        <div id="container_bike_plan"></div>
 
-                        <button id="bnt_subscribe_motorbike"
+                        <button id="btn_subscribe_motorbike"
                             class="bg-green-500 hover:bg-green-600 w-full py-3 rounded-xl font-semibold transition">
+
                             Subscribe
+
                         </button>
 
                     </div>
 
                 </div>
-
 
 
             </div>
@@ -159,16 +162,19 @@
 
 
     <!-- SCRIPTS -->
+
     <script type="module" src="../scripts/main.js"></script>
+
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
     <script>
 
         AOS.init({
             duration: 900,
             once: true
         });
-    </script>
 
+    </script>
 
 </body>
 
