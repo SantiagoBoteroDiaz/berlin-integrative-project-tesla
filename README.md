@@ -211,11 +211,13 @@ User redirected to checkout
 
 ## 📂 Project Structure
 
+
+
 ```
-.
 │   .env.template
 │   .gitignore
 │   image.png
+│   index.html
 │   package-lock.json
 │   package.json
 │   README.fulls.md
@@ -247,42 +249,76 @@ User redirected to checkout
 │               payment.service.js
 │               vehicle.service.js
 │
-└── frontend
-    ├── public
-    │       index.html
+├── frontend
+│   ├── public
+│   │
+│   └── src
+│       ├── assets
+│       │   │   favicon.jpg
+│       │   │   hero.jpg
+│       │   │   logo-icon.png
+│       │   │
+│       │   └── images
+│       │           plateDetec.jpeg
+│       │
+│       ├── components
+│       │
+│       ├── pages
+│       │   │   suscriptions.html
+│       │   │   vehicleExit.html
+│       │   │
+│       │   ├── admin
+│       │   │       dashboard.html
+│       │   │       hourlyParking.html
+│       │   │       suscriptions.html
+│       │   │
+│       │   └── mercadopago
+│       │           ticketFailed.html
+│       │           ticketPending.html
+│       │           ticketSucces.html
+│       │
+│       ├── scripts
+│       │   │   doom.js
+│       │   │   main.js
+│       │   │
+│       │   ├── api
+│       │   │       dashboard.api.js
+│       │   │       hourlyRate.js
+│       │   │       payment.api.js
+│       │   │       planSuscription.api.js
+│       │   │       suscription.api.js
+│       │   │       vehicle.api.js
+│       │   │
+│       │   ├── viewadmin
+│       │   │       dashboard.admin.js
+│       │   │       renderAllHourlyRate.js
+│       │   │       renderAllSuscription.js
+│       │   │
+│       │   └── viewuser
+│       │           suscription.user.js
+│       │           vehicleExit.js
+│       │
+│       └── styles
+│               dashboard.css
+│
+└── ia
+    │   howToRun.md
+    │   requirements.txt
+    │   __init__.py
+    │
+    ├── data
+    │       car.mp4
+    │
+    ├── model
+    │       modeloIA.pt
     │
     └── src
-        ├── assets
-        │       favicon.jpg
-        │       hero.jpg
-        │       logo-icon.png
-        │
-        ├── components
-        ├── pages
-        │   │   suscriptions.html
-        │   │   vehicleExit.html
-        │   │
-        │   └── admin
-        │           dashboard.html
-        │           hourlyParking.html
-        │           suscriptions.html
-        │
-        ├── scripts
-        │   │   doom.js
-        │   │   main.js
-        │   │
-        │   ├── api
-        │   │       suscriptions.api.js
-        │   │       vehicle.api.js
-        │   │
-        │   ├── viewadmin
-        │   │       dashboard.admin.js
-        │   │
-        │   └── viewuser
-        │           suscription.user.js
-        │           vehicleExit.js
-        │
-        └── styles
+            config.py
+            db.py
+            detection.py
+            main.py
+            ocr_utils.py
+            __init__.py
 ```
 ## 🧭 Roadmap
 

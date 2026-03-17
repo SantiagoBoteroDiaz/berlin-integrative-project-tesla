@@ -1,4 +1,4 @@
-import {plateInput , bntExit} from "../doom.js"
+import {plateInput , bntExit , menssage} from "../doom.js"
 import { pay } from "../api/payment.api.js";
 
 export function entryDashBoard() {
@@ -11,29 +11,37 @@ export function entryDashBoard() {
         const plate = plateInput.value.trim().toUpperCase();
 
         if (!plate) {
-            alert("Enter plate");
+           menssage.innerHTML = ` <p 
+        class="text-center text-sm font-semibold text-red-400 mb-4">
+            Enter Plate
+        </p>`
             return;
-        }
+        };
 
         
         if (plate === "SNX99") {
             window.location.href = "../pages/admin/dashboard.html";
             return;
-        }
+        };
 
 
         try {
 
             const data = await pay(plate);
+           
 
-
-            window.location.href=data.response.sandboxInitPoint
+            console.log(data.response.initPoint);
+            
+            window.location.href=data.response.initPoint
 
 
         } catch (error) {
-
+            
             console.error(error);
-            alert("Error connecting with payment service");
+            menssage.innerHTML = ` <p 
+            class="text-center text-sm font-semibold text-red-400 mb-4">
+            Plate Dont Found
+            </p>`
 
         }
 

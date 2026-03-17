@@ -83,7 +83,7 @@ async function newSubCar(e) {
 
 
 
-        window.location.href = result.response.sandboxInitPoint;
+        window.location.href = result.response.initPoint;
 
     } catch (error) {
         console.error(error);
@@ -175,7 +175,7 @@ async function newSubBike(e) {
 
         
         
-        window.location.href = result.response.sandboxInitPoint;
+        window.location.href = result.response.initPoint;
 
         
 
