@@ -13,8 +13,8 @@
     python --version
 
 2. Clonar o descargar el proyecto
-    git clone<https://github.com/Riwi-io-Medellin/berlin-integrative-project-tesla.git>
-
+    <git clone https://github.com/Riwi-io-Medellin/berlin-integrative-project-tesla.git>
+    <cd ia>
 3. Crear el entorno virtual
     <python -m venv venv>
 
@@ -26,3 +26,6 @@
 
  6. Verificar instalación de dependencias
     <pip list>
+
+7. Correr el modelo de IA placa
+    <python -m src.main>
