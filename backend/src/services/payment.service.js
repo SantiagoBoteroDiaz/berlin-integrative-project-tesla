@@ -1,6 +1,6 @@
 import { createPreference, getPayment } from '../sdk/mercadopago.js';
 import { env } from '../config/env.js';
-import { exitSession } from './vehicle.service.js';
+import { paymentExit, registNewVehiclePlan } from './vehicle.service.js';
 
 const DEFAULT_BACK_URLS = {
   success: 'https://santiagoboterodiaz.github.io/berlin-integrative-project-tesla/frontend/src/pages/mercadopago/ticketSucces.html',
@@ -195,11 +195,30 @@ export const confirmPaymentAndExit = async ({ paymentId, plate }) => {
     };
   }
 
-  const exitResult = await exitSession(resolvedPlate);
+  const statusLabel = payment.status ?? 'approved';
+  const planType = payment.metadata?.planType;
+
+  if (planType) {
+    const planResult = await registNewVehiclePlan(
+      resolvedPlate,
+      planType,
+      paidAmount,
+      statusLabel,
+      payment.id
+    );
+
+    return {
+      approved: true,
+      payment: basePaymentInfo,
+      plan: planResult
+    };
+  }
+
+  const exitPermission = await paymentExit(resolvedPlate, payment.id, paidAmount, statusLabel);
 
   return {
     approved: true,
     payment: basePaymentInfo,
-    exit: exitResult
+    exit: exitPermission
   };
 };

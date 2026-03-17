@@ -7,7 +7,8 @@ import {
   hourlyRate,
   suscription,
   registNew,
-  registPlan
+  registPlan,
+  registExitAndPayment
 } from "../controllers/vehicle.controller.js";
 import { confirmPayment, handlePaymentCallback } from "../controllers/vehicle.controller.js"; 
 const vehicleRoutes = Router();
@@ -24,5 +25,6 @@ vehicleRoutes.get('/hourlyRate', hourlyRate);
 vehicleRoutes.get('/suscription', suscription); 
 vehicleRoutes.post('/newVehicle' , registNew);   
 vehicleRoutes.post('/registPlan', registPlan); 
+vehicleRoutes.post('/exitPermission', registExitAndPayment);
 
 export default vehicleRoutes;
