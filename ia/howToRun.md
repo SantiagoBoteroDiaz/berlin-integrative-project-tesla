@@ -1,31 +1,38 @@
-1. Requisitos Previos
+# Prerequisites
 
-    Antes de comenzar se deben tener instalados los siguientes programas:
+Before starting, the following programs must be installed:
 
-    Python 3.10 o superior
+Python 3.10 or higher
 
-    pip (gestor de paquetes de Python)
+pip (Python package manager)
 
-    Git (opcional para clonar el repositorio)
+Git (optional, for cloning the repository)
 
-    Para verificar que Python está instalado ejecutar en la terminal:
+To verify that Python is installed, run the following command in the terminal:
 
-    python --version
+    <python --version>
 
-2. Clonar o descargar el proyecto
+Clone or download the project
+
     <git clone https://github.com/Riwi-io-Medellin/berlin-integrative-project-tesla.git>
     <cd ia>
-3. Crear el entorno virtual
+
+Create the virtual environment
+
     <python -m venv venv>
 
-4. Activar el entorno virtual
+Activate the virtual environment
+
     <venv\Scripts\activate>
 
-5. Instalar las dependencias del proyecto
-    <python -m pip install -r ./ia/requirements.txt>
+Install the project dependencies
 
- 6. Verificar instalación de dependencias
+    <pip install -r ./ia/requirements.txt>
+
+Verify the installation of dependencies
+
     <pip list>
 
-7. Correr el modelo de IA placa
+Run the license plate AI model
+
     <python -m src.main>
